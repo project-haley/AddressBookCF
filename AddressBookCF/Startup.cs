@@ -1,3 +1,4 @@
+using AddressBook.Data;
 using AddressBookCF.Data;
 using AddressBookCF.Services;
 using AddressBookCF.Services.Interfaces;
@@ -28,7 +29,7 @@ namespace AddressBookCF
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(DataUtility.GetConnectionString(Configuration)));
 
             // we wrote this service ourselves to handle image files
             services.AddScoped<IImageService, BasicImageService>();
